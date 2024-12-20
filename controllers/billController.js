@@ -5,8 +5,10 @@ const addBill = async (req, res) => {
   try {
     const bill = await Bill.create({ amount, description, trip });
     res.status(201).json(bill);
-  } catch (err) {
-    res.status(400).json({ message: "Error adding bill", error: err.message });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Error adding bill", error: error.message });
   }
 };
 
@@ -15,10 +17,10 @@ const getBills = async (req, res) => {
   try {
     const bills = await Bill.find({ trip: tripId });
     res.status(200).json(bills);
-  } catch (err) {
+  } catch (error) {
     res
-      .status(400)
-      .json({ message: "Error fetching bills", error: err.message });
+      .status(500)
+      .json({ message: "Error fetching bills", error: error.message });
   }
 };
 

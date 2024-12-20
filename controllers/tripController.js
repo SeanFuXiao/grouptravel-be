@@ -10,10 +10,10 @@ const createTrip = async (req, res) => {
       createdBy: req.user.id,
     });
     res.status(201).json(trip);
-  } catch (err) {
+  } catch (error) {
     res
       .status(400)
-      .json({ message: "Error creating trip", error: err.message });
+      .json({ message: "Error creating trip", error: error.message });
   }
 };
 
@@ -21,10 +21,10 @@ const getTrips = async (req, res) => {
   try {
     const trips = await Trip.find({ createdBy: req.user.id });
     res.status(200).json(trips);
-  } catch (err) {
+  } catch (error) {
     res
-      .status(400)
-      .json({ message: "Error fetching trips", error: err.message });
+      .status(500)
+      .json({ message: "Error fetching trips", error: error.message });
   }
 };
 
