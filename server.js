@@ -8,21 +8,19 @@ const tripRoutes = require("./routes/tripRoutes");
 const billRoutes = require("./routes/billRoutes");
 
 const app = express();
-const cors = require("cors");
 
 connectDB();
 
 // Middleware
-app.use(cors());
-app.use(express.json());
-pp.use(
+app.use(
   cors({
-    origin: "https://gtesredo-54350d55fab4.herokuapp.com",
+    origin: "http://localhost:5177",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
 );
-// Routes
+app.use(express.json());
+
 app.use("/api/auth", authRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/bills", billRoutes);
