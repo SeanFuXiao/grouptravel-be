@@ -14,7 +14,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5177",
+    origin: "*",s
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
